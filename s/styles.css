@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+    --bg-dark: #121212;
+    --bg-light: #f0f0f0;
+    --text-dark: #e0e0e0;
+    --text-light: #202020;
+    --primary-color: #bb86fc;
+    --secondary-color: #03dac6;
+    --search-bar-bg: rgba(255, 255, 255, 0.1);
+    --placeholder-color: rgba(255, 255, 255, 0.7);
+}
+
+body {
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.search-form {
+    width: 100%;
+}
+
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: var(--search-bar-bg);
+    border-radius: 25px;
+    padding: 5px;
+}
+
+.search-bar {
+    flex: 1;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    background: none;
+    color: var(--text-dark);
+    outline: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.search-bar::placeholder {
+    color: var(--placeholder-color);
+    transition: color 0.3s;
+}
+
+.search-go {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+    color: var(--text-dark);
+    padding: 10px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.search-go:hover {
+    background-color: var(--secondary-color);
+}
+
+.search-go i {
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
+    line-height: 1.2em;
+    text-align: center;
+}
+
+body.light-theme {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+
+body.light-theme .search-bar-container {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .search-bar {
+    color: var(--text-light);
+}
+
+body.light-theme .search-bar::placeholder {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+body.light-theme .search-go {
+    background-color: var(--secondary-color);
+    color: var(--text-light);
+}
+
+body.light-theme .search-go:hover {
+    background-color: var(--primary-color);
+}
+

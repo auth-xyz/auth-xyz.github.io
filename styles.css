@@ -1,4 +1,3 @@
-/* Import JetBrains Mono font */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 :root {
@@ -8,6 +7,8 @@
     --text-light: #202020;
     --primary-color: #bb86fc;
     --secondary-color: #03dac6;
+    --tooltip-bg: rgba(0, 0, 0, 0.8);
+    --tooltip-text: #e0e0e0;
 }
 
 body {
@@ -21,106 +22,148 @@ body {
     background-color: var(--bg-dark);
     color: var(--text-dark);
     transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden; /* Added to prevent horizontal scrolling */
 }
 
+
 .container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
     text-align: center;
 }
 
-h1 {
-    font-size: 4rem;
-    margin: 0;
+.username {
+    font-size: 3rem;
 }
 
 footer {
-    position: absolute;
-    bottom: 20px;
+    width: 100%;
     display: flex;
+    justify-content: center;
     gap: 20px;
+    padding: 20px;
+    background-color: var(--bg-dark);
+    position: absolute;
+    bottom: 0;
 }
 
-.social-icon {
-    color: var(--primary-color);
-    text-decoration: none;
+.icon {
     font-size: 2rem;
+    color: var(--text-dark);
+    text-decoration: none;
     transition: color 0.3s;
 }
 
-.social-icon:hover {
-    color: var(--secondary-color);
+.icon:hover {
+    color: var(--primary-color);
 }
 
-.discord {
+.discord-icon {
     position: relative;
 }
 
-.discord .tooltip {
+.discord-tooltip {
     visibility: hidden;
-    width: 120px;
-    background-color: var(--text-dark);
-    color: var(--bg-dark);
+    width: auto;
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text);
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 5px 10px;
+    font-size: 0.9rem; /* Adjusted font size */
     position: absolute;
-    bottom: 125%;
+    bottom: 125%; /* Position above the icon */
     left: 50%;
-    margin-left: -60px;
+    transform: translateX(-50%);
+    z-index: 1;
     opacity: 0;
-    font-size: 0.8rem; /* Adjusted font size */
     transition: opacity 0.3s;
+    white-space: nowrap;
 }
 
-.discord:hover .tooltip {
+.discord-icon:hover .discord-tooltip {
     visibility: visible;
     opacity: 1;
-}
-
-.theme-switch {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-.theme-switch input[type="checkbox"] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-}
-
-.theme-switch label {
-    cursor: pointer;
-    text-indent: -9999px;
-    width: 50px;
-    height: 25px;
-    background: var(--primary-color);
-    display: block;
-    border-radius: 100px;
-    position: relative;
-}
-
-.theme-switch label:after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    width: 21px;
-    height: 21px;
-    background: #fff;
-    border-radius: 90px;
-    transition: 0.3s;
-}
-
-.theme-switch input:checked + label {
-    background: var(--secondary-color);
-}
-
-.theme-switch input:checked + label:after {
-    left: calc(100% - 2px);
-    transform: translateX(-100%);
 }
 
 body.light-theme {
     background-color: var(--bg-light);
     color: var(--text-light);
 }
+
+body.light-theme .icon {
+    color: var(--text-light);
+}
+
+body.light-theme .icon:hover {
+    color: var(--primary-color);
+}
+
+body.light-theme footer {
+    background-color: var(--bg-light);
+}
+
+body.light-theme .discord-tooltip {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: var(--text-dark);
+}
+
+
+/* Updated styles.css */
+
+.theme-switcher {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+

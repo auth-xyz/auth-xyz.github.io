@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         try {
             const response = await fetch(file);
             if (!response.ok) {
+                console.error(response)
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             const repoData = await response.json();

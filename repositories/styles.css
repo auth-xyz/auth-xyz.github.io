@@ -79,31 +79,4 @@ footer {
     white-space: nowrap;
 }
 
-.discord-icon:hover .discord-tooltip {
-    visibility: visible;
-    opacity: 1;
-}
-
-/* Light theme styles */
-body.light-theme {
-    background-color: var(--bg-light);
-    color: var(--text-light);
-}
-
-body.light-theme .icon {
-    color: var(--text-light);
-}
-
-body.light-theme footer {
-    background-color: var(--bg-light);
-}
-
-body.light-theme .icon:hover {
-    color: var(--primary-color);
-}
-
-body.light-theme .discord-tooltip {
-    background-color: var(--bg-dark);
-    color: var(--text-dark);
-}
 

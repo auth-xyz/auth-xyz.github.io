@@ -1,0 +1,5 @@
+{
+  "title": "SSH Manager",
+  "description": "a Session Manager written in python for OpenSSH",
+  "url": "https://github.com/auth-xyz/sshman"
+}

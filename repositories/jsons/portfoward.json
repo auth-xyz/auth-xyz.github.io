@@ -1,0 +1,5 @@
+{
+  "title": "Port Foward",
+  "description": "a bash script using the NATPMP protocol for port fowarding with qbittorrent",
+  "url": "https://github.com/auth-xyz/PortFoward"
+}

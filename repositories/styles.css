@@ -1,0 +1,109 @@
+/* Reset styles and basic container setup */
+body {
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    transition: background-color 0.3s, color 0.3s;
+    overflow-x: hidden;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.repo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    background-color: var(--bg-dark);
+    position: absolute;
+    bottom: 0;
+}
+
+.icon {
+    font-size: 2rem;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.icon:hover {
+    color: var(--primary-color);
+}
+
+.discord-icon {
+    position: relative;
+}
+
+.discord-tooltip {
+    visibility: hidden;
+    width: auto;
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s;
+    white-space: nowrap;
+}
+
+.discord-icon:hover .discord-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Light theme styles */
+body.light-theme {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+
+body.light-theme .icon {
+    color: var(--text-light);
+}
+
+body.light-theme footer {
+    background-color: var(--bg-light);
+}
+
+body.light-theme .icon:hover {
+    color: var(--primary-color);
+}
+
+body.light-theme .discord-tooltip {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+

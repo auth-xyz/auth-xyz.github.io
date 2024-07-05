@@ -1,27 +1,12 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const repoContainer = document.getElementById('repoContainer');
 
-    // Function to get all JSON files in the jsons directory
-    async function getJsonFiles() {
-        try {
-            const response = await fetch('./jsons/');
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-            const text = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(text, 'text/html');
-            const links = [...doc.querySelectorAll('a')];
-            const jsonFiles = links
-                .map(link => link.getAttribute('href'))
-                .filter(href => href.endsWith('.json'))
-                .map(href => `./jsons/${href}`);
-            return jsonFiles;
-        } catch (error) {
-            console.error('Error fetching JSON file list:', error);
-            return [];
-        }
-    }
+    // List of repository JSON files
+    const repoFiles = [
+        'jsons/portfoward.json',
+        'jsons/serenity.json',
+        'jsons/sshman.json'
+    ];
 
     // Function to fetch repository data from JSON files
     async function fetchRepoData(file) {
@@ -39,7 +24,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Function to display repository information
     async function displayRepos() {
-        const repoFiles = await getJsonFiles();
         for (const file of repoFiles) {
             const repoData = await fetchRepoData(file);
             if (repoData && repoData.title && repoData.description && repoData.url) {

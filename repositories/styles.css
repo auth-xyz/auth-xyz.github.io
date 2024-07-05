@@ -40,7 +40,7 @@ header {
     text-align: center;
     max-width: 300px;
     width: 100%;
-    background-color: #45494b; /* Dark background color */
+    background-color: #343536; /* Dark background color */
     color: #ffffff; /* Light text color */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
